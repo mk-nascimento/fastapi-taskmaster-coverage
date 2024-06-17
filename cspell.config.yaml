@@ -5,4 +5,8 @@ ignorePaths:
   - pyproject.toml
 words:
   - devcontainer
+  - fastapi
+  - nullable
+  - pydantic
   - pyproject
+  - sqlalchemy
