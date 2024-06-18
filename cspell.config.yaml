@@ -2,11 +2,15 @@ version: "0.2"
 ignorePaths:
   - .vscode/
   - .devcontainer/
+  - alembic
   - pyproject.toml
 words:
   - devcontainer
   - fastapi
+  - mariadb
+  - mariadbconnector
   - nullable
   - pydantic
   - pyproject
   - sqlalchemy
+  - unicode

@@ -1,0 +1,40 @@
+name: taskmaster
+volumes:
+  db:
+
+services:
+  app:
+    container_name: taskmaster-app
+    image: mcr.microsoft.com/devcontainers/python:3.11
+
+    env_file: devcontainer.env
+
+    network_mode: service:database
+
+    command: sleep infinity
+
+    volumes:
+      - ../../:/workspaces:cached
+
+  database:
+    container_name: mariadb
+    image: mariadb:11-noble
+    restart: unless-stopped
+
+    env_file: devcontainer.env
+    environment:
+      MARIADB_PASSWORD: secret
+
+    volumes:
+      - db:/var/lib/mysql:Z
+
+  adminer:
+    container_name: adminer
+    image: adminer
+
+    network_mode: service:database
+
+    environment:
+      ADMINER_DEFAULT_SERVER: mariadb
+      ADMINER_DESIGN: lucas-sandery
+      ADMINER_PLUGINS: sql-log

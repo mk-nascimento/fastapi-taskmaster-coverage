@@ -1,9 +1,15 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 {
-	"image":"mcr.microsoft.com/devcontainers/python:3.11",
+	"name": "Taskmaster",
+	"dockerComposeFile": "devcontainer-compose.yml",
+	"service": "app",
+	"forwardPorts": [8080,8081],
+	"shutdownAction": "stopCompose",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": { "configureZshAsDefaultShell": true },
-		"ghcr.io/devcontainers/features/python:1": { "toolsToInstall": "pylint,pytest" },
+		"ghcr.io/devcontainers/features/python:1.4.2": { "toolsToInstall": "pylint,pytest" },
 		"ghcr.io/devcontainers-contrib/features/poetry:2": { "version": "1.8.*" },
 		"ghcr.io/devcontainers/features/java:1": {},
 		"ghcr.io/devcontainers/features/node:1": {}
@@ -23,7 +29,8 @@
 				"sonarsource.sonarlint-vscode",
 				"redhat.vscode-yaml",
 				"bierner.github-markdown-preview",
-				"tamasfe.even-better-toml"
+				"tamasfe.even-better-toml",
+				"dotenv.dotenv-vscode"
 			],
 			"settings": {
 				"cSpell.language": "en,pt-BR",
